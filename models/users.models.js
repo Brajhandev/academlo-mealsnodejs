@@ -29,7 +29,7 @@ const Users = db.define("user", {
     type: DataTypes.STRING,
     allowNull: true,
     defaultValue: "normal",
-  }
+  },
 });
 
 module.exports = { Users };

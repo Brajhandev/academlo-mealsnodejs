@@ -48,7 +48,7 @@ const createRestaurantValidators = [
   body("rating").notEmpty().withMessage("rating cannot be empty 😐"),
   checkValidations,
 ];
-const createReviewValidators = [  
+const createReviewValidators = [
   body("rating").notEmpty().withMessage("rating cannot be empty 😐"),
   body("comment")
     .isString()

@@ -2,7 +2,6 @@ const { Reviews } = require("../models/reviews.models");
 const { catchAsync } = require("../utils/catchAsync.utils");
 
 const createReview = catchAsync(async (req, res) => {
- 
   const { restaurantId } = req.params;
   const userId = req.sessionUser.id;
   const { rating, comment } = req.body;
@@ -24,7 +23,9 @@ const updateReview = catchAsync(async (req, res) => {
 
   const { id, restaurantId } = req.params;
 
-  const reviewToUpdate = await Reviews.findOne({ where: {  id, restaurantId:restaurantId } });
+  const reviewToUpdate = await Reviews.findOne({
+    where: { id, restaurantId: restaurantId },
+  });
 
   const updatedReview = await reviewToUpdate.update({ rating, comment });
   res.status(202).json({
@@ -35,7 +36,9 @@ const updateReview = catchAsync(async (req, res) => {
 
 const deleteReview = catchAsync(async (req, res) => {
   const { id, restaurantId } = req.params;
-  const ReviewToDelete = await Reviews.findOne({ where: { id, restaurantId:restaurantId } });
+  const ReviewToDelete = await Reviews.findOne({
+    where: { id, restaurantId: restaurantId },
+  });
   await ReviewToDelete.update({ status: "deleted" });
   res.status(202).json({
     status: "Review has been deleted 🙂",

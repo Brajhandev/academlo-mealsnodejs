@@ -7,7 +7,7 @@ const Reviews = db.define("review", {
     autoIncrement: true,
     allowNull: false,
   },
- 
+
   userId: {
     type: DataTypes.INTEGER,
     allowNull: true,

@@ -1,5 +1,5 @@
 const { db, DataTypes } = require("../utils/database.utils");
-const {Meals} = require("./meals.models")
+const { Meals } = require("./meals.models");
 
 const Orders = db.define("order", {
   id: {
@@ -33,6 +33,6 @@ const Orders = db.define("order", {
   },
 });
 
-Orders.belongsTo(Meals, {foreignKey:"mealId"})
+Orders.belongsTo(Meals, { foreignKey: "mealId" });
 
 module.exports = { Orders };

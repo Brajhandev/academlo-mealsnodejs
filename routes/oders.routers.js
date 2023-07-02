@@ -6,17 +6,21 @@ const {
   ordersDelete,
 } = require("../controllers/oders.controllers");
 
-//Middlewares
 const { protectSession } = require("../middlewares/auth.middlewares");
-const {createOrdersValidators}=require('../middlewares/validators.middleware');
-const {orderExists,validateTokenAndUser}=require('../middlewares/orders.middlewares');
+const {
+  createOrdersValidators,
+} = require("../middlewares/validators.middleware");
+const {
+  orderExists,
+  validateTokenAndUser,
+} = require("../middlewares/orders.middlewares");
 
 const Ordersrouters = express.Router();
 
 Ordersrouters.use(protectSession);
-Ordersrouters.post("/", createOrdersValidators,ordersCreate);
-Ordersrouters.get("/me",ordersUserAll);
-Ordersrouters.patch("/:id",orderExists,validateTokenAndUser,ordersUpdate);
-Ordersrouters.delete("/:id",orderExists,validateTokenAndUser,ordersDelete);
+Ordersrouters.post("/", createOrdersValidators, ordersCreate);
+Ordersrouters.get("/me", ordersUserAll);
+Ordersrouters.patch("/:id", orderExists, validateTokenAndUser, ordersUpdate);
+Ordersrouters.delete("/:id", orderExists, validateTokenAndUser, ordersDelete);
 
 module.exports = { Ordersrouters };

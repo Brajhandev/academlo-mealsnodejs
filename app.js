@@ -1,4 +1,3 @@
-
 const express = require("express");
 const { db } = require("./utils/database.utils");
 const { Usersrouters } = require("./routes/users.routers");
@@ -7,10 +6,8 @@ const { Mealsrouters } = require("./routes/meals.routers");
 const { Ordersrouters } = require("./routes/oders.routers");
 const { globalErrorHandler } = require("./controllers/errors.controllers");
 
-
 const app = express();
 app.use(express.json());
-
 
 app.use("/api/v1/users", Usersrouters);
 app.use("/api/v1/restaurants", Restaurantsrouters);
