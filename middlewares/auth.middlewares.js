@@ -30,7 +30,7 @@ const protectSession = catchAsync(async (req, res, next) => {
   }
 
   // Verify the token
-  const decoded = jwt.verify(token, "fabiancp");
+  const decoded = jwt.verify(token, "blsjhos");
 
   // Verify the token's owner
   const user = await Users.findOne({
@@ -53,7 +53,9 @@ const protectAdmin = (req, res, next) => {
   const { sessionUser } = req;
 
   if (sessionUser.role !== "admin") {
-    return next(new AppError('You do not have the access level for this data. 😯', 403));
+    return next(
+      new AppError("You do not have the access level for this data. 😯", 403)
+    );
     // res.status(403).json({
     //   status: "error",
     //   message: "You do not have the access level for this data.",
@@ -65,5 +67,5 @@ const protectAdmin = (req, res, next) => {
 
 module.exports = {
   protectSession,
-  protectAdmin
+  protectAdmin,
 };
